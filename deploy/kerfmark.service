@@ -1,0 +1,17 @@
+[Unit]
+Description=Brackenbury OS prototype (Next.js) for auther.co.uk
+After=network.target
+
+[Service]
+Type=simple
+User=kerfmark
+WorkingDirectory=/srv/kerfmark
+Environment=NODE_ENV=production
+Environment=PORT=3005
+Environment=HOSTNAME=127.0.0.1
+ExecStart=/usr/bin/env npm start -- -p 3005 -H 127.0.0.1
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

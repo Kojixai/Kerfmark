@@ -15,6 +15,16 @@ npm run build
 
 Import the repo in Vercel. It detects Next.js; no environment variables or settings are needed. Every visitor gets their own copy of the demo data in their browser, and **Access and demo → Reset demo data** puts it back.
 
+## Deploy on the Hetzner server (auther.co.uk)
+
+On the server, from any checkout of this repo:
+
+```bash
+sudo CERTBOT_EMAIL=you@example.com bash deploy/setup.sh
+```
+
+It installs Node 22 if needed, clones to `/srv/kerfmark`, builds, runs the app as a systemd service on `127.0.0.1:3005`, adds an nginx site for `auther.co.uk` and `www.auther.co.uk` only, and gets a Let's Encrypt certificate. It stops without changing anything if another nginx file already names `auther.co.uk` or port 3005 is taken, so auther.app is never touched. Re-run it to deploy updates.
+
 ## What to try
 
 The overview has three worked projects.
